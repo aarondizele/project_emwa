@@ -1,28 +1,106 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="mb-4">
+      <Header />
     </div>
-    <router-view/>
+    <transition name="slide" appear mode="out-in">
+      <router-view />
+    </transition>
+    <section class="widget--footer-main">
+      <Footer />
+    </section>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+export default {
+  components: {
+    Header,
+    Footer
+  },
+  created() {
+    $(function () {
+      var nua = navigator.userAgent
+      var isAndroid = (nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Android ') > -1 && nua.indexOf('AppleWebKit') > -1 && nua.indexOf('Chrome') === -1)
+      if (isAndroid) {
+        $('select.form-control').removeClass('form-control').css('width', '100%')
+      }
+    })
+  }
 }
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+</script>
+
+<style lang="scss">
+// <!-- @Import Styles -->
+@import './styles/w3.css';
+@import './styles/fonts.css';
+@import './styles/style.css';
+@import '../static/icons/css/simple-line-icons.css';
+
+iframe[id^="youtube-player"] {
+  width: 100%!important;
+  height: 200px!important;
+  border-radius: 4px!important;
+}
+
+.slide-enter-active {
+  animation: slide-in .1s ease-out forwards;
+}
+.slide-leave-active {
+  animation: slide-out .1s ease-out forwards;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-out {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+}
+
+.VueCarousel-pagination {
+  position: absolute!important;
+  bottom: 20px !important;
+}
+.home-carousel {
+  .VueCarousel {
+    position: relative!important;
+  }
+  .VueCarousel-pagination {
+    position: absolute!important;
+    left: 300px !important;
+    bottom: 10px !important;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .home-carousel {
+    .VueCarousel-pagination {
+      position: absolute!important;
+      left: 0 !important;
+      bottom: 10px !important;
+    }
+  }
+}
+@media screen and (min-width:768px) and (max-width:991px) {
+  .home-carousel {
+    .VueCarousel-pagination {
+      left: 130px !important;
+      bottom: 10px !important;
     }
   }
 }

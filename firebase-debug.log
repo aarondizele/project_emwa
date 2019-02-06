@@ -1,0 +1,156 @@
+[debug] [2019-02-06T12:10:10.619Z] ----------------------------------------------------------------------
+[debug] [2019-02-06T12:10:10.627Z] Command:       /usr/bin/node /usr/bin/firebase deploy
+[debug] [2019-02-06T12:10:10.628Z] CLI Version:   6.3.1
+[debug] [2019-02-06T12:10:10.628Z] Platform:      linux
+[debug] [2019-02-06T12:10:10.628Z] Node Version:  v11.7.0
+[debug] [2019-02-06T12:10:10.629Z] Time:          Wed Feb 06 2019 13:10:10 GMT+0100 (West Africa Standard Time)
+[debug] [2019-02-06T12:10:10.630Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-02-06T12:10:10.668Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-02-06T12:10:10.669Z] > authorizing via signed-in user
+[debug] [2019-02-06T12:10:10.670Z] [iam] checking project cabemery-3474d for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2019-02-06T12:10:10.675Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-02-06T12:10:10.676Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-02-06T12:10:12.612Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-06T12:10:12.655Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/cabemery-3474d:testIamPermissions  
+
+[debug] [2019-02-06T12:10:14.807Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-06T12:10:14.813Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/cabemery-3474d  
+ 
+[debug] [2019-02-06T12:10:16.477Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'cabemery-3474d'...
+[info] 
+[info] i  deploying hosting
+[debug] [2019-02-06T12:10:16.490Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/cabemery-3474d/versions  
+
+[debug] [2019-02-06T12:10:20.444Z] <<< HTTP RESPONSE 500
+[debug] [2019-02-06T12:10:20.445Z] <<< HTTP RESPONSE BODY
+[error] 
+[error] Error: HTTP Error: 500, Internal error encountered.
+[debug] [2019-02-06T12:10:21.757Z] Error Context: {
+  "body": {
+    "error": {
+      "code": 500,
+      "message": "Internal error encountered.",
+      "status": "INTERNAL"
+    }
+  },
+  "response": {
+    "statusCode": 500,
+    "body": {
+      "error": {
+        "code": 500,
+        "message": "Internal error encountered.",
+        "status": "INTERNAL"
+      }
+    },
+    "headers": {
+      "vary": "X-Origin, Referer, Origin,Accept-Encoding",
+      "content-type": "application/json; charset=UTF-8",
+      "date": "Wed, 06 Feb 2019 12:10:19 GMT",
+      "server": "ESF",
+      "cache-control": "private",
+      "x-xss-protection": "1; mode=block",
+      "x-frame-options": "SAMEORIGIN",
+      "x-content-type-options": "nosniff",
+      "alt-svc": "quic=\":443\"; ma=2592000; v=\"44,43,39\"",
+      "accept-ranges": "none",
+      "transfer-encoding": "chunked"
+    },
+    "request": {
+      "uri": {
+        "protocol": "https:",
+        "slashes": true,
+        "auth": null,
+        "host": "firebasehosting.googleapis.com",
+        "port": 443,
+        "hostname": "firebasehosting.googleapis.com",
+        "hash": null,
+        "search": null,
+        "query": null,
+        "pathname": "/v1beta1/sites/cabemery-3474d/versions",
+        "path": "/v1beta1/sites/cabemery-3474d/versions",
+        "href": "https://firebasehosting.googleapis.com/v1beta1/sites/cabemery-3474d/versions"
+      },
+      "method": "POST"
+    }
+  }
+}
+[debug] [2019-02-06T13:41:21.551Z] ----------------------------------------------------------------------
+[debug] [2019-02-06T13:41:21.559Z] Command:       /usr/bin/node /usr/bin/firebase deploy --only hosting
+[debug] [2019-02-06T13:41:21.560Z] CLI Version:   6.3.0
+[debug] [2019-02-06T13:41:21.560Z] Platform:      linux
+[debug] [2019-02-06T13:41:21.561Z] Node Version:  v11.7.0
+[debug] [2019-02-06T13:41:21.561Z] Time:          Wed Feb 06 2019 14:41:21 GMT+0100 (West Africa Standard Time)
+[debug] [2019-02-06T13:41:21.562Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-02-06T13:41:21.605Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-02-06T13:41:21.616Z] > authorizing via signed-in user
+[debug] [2019-02-06T13:41:21.616Z] [iam] checking project cabemery-3474d for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2019-02-06T13:41:21.624Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/cabemery-3474d:testIamPermissions  
+
+[debug] [2019-02-06T13:41:23.179Z] <<< HTTP RESPONSE 200
+[debug] [2019-02-06T13:41:23.186Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/cabemery-3474d  
+ 
+[debug] [2019-02-06T13:41:24.384Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'cabemery-3474d'...
+[info] 
+[info] i  deploying hosting
+[debug] [2019-02-06T13:41:24.400Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/cabemery-3474d/versions  
+
+[debug] [2019-02-06T13:41:25.953Z] <<< HTTP RESPONSE 500
+[debug] [2019-02-06T13:41:25.954Z] <<< HTTP RESPONSE BODY
+[error] 
+[error] Error: HTTP Error: 500, Internal error encountered.
+[debug] [2019-02-06T13:41:26.719Z] Error Context: {
+  "body": {
+    "error": {
+      "code": 500,
+      "message": "Internal error encountered.",
+      "status": "INTERNAL"
+    }
+  },
+  "response": {
+    "statusCode": 500,
+    "body": {
+      "error": {
+        "code": 500,
+        "message": "Internal error encountered.",
+        "status": "INTERNAL"
+      }
+    },
+    "headers": {
+      "vary": "X-Origin, Referer, Origin,Accept-Encoding",
+      "content-type": "application/json; charset=UTF-8",
+      "date": "Wed, 06 Feb 2019 13:41:25 GMT",
+      "server": "ESF",
+      "cache-control": "private",
+      "x-xss-protection": "1; mode=block",
+      "x-frame-options": "SAMEORIGIN",
+      "x-content-type-options": "nosniff",
+      "alt-svc": "quic=\":443\"; ma=2592000; v=\"44,43,39\"",
+      "accept-ranges": "none",
+      "transfer-encoding": "chunked"
+    },
+    "request": {
+      "uri": {
+        "protocol": "https:",
+        "slashes": true,
+        "auth": null,
+        "host": "firebasehosting.googleapis.com",
+        "port": 443,
+        "hostname": "firebasehosting.googleapis.com",
+        "hash": null,
+        "search": null,
+        "query": null,
+        "pathname": "/v1beta1/sites/cabemery-3474d/versions",
+        "path": "/v1beta1/sites/cabemery-3474d/versions",
+        "href": "https://firebasehosting.googleapis.com/v1beta1/sites/cabemery-3474d/versions"
+      },
+      "method": "POST"
+    }
+  }
+}

@@ -7,8 +7,14 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "firebase": "^5.8.1",
+    "lazysizes": "^4.1.5",
+    "lodash": "^4.17.11",
+    "moment": "^2.24.0",
     "vue": "^2.5.21",
+    "vue-carousel": "^0.17.0",
     "vue-router": "^3.0.1",
+    "vue-youtube-embed": "^2.2.1",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
