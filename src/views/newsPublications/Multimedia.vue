@@ -12,10 +12,10 @@
     <!--  -->
     <section class="container mt-5">
       <div class="row">
-        <div class="col-xs-12 col-md-9 pr-md-5">
+        <div class="col-xs-12 col-md-8 pr-md-5">
           <div class="row">
             <div class="col-xs-12" v-for="video in multimedia" :key="video.id">
-              <div class="panel panel-default w-100 secondary--background widget--presence-experts widget--borderless">
+              <div class="panel panel-default w-100 secondary--background widget--multimedia widget--borderless">
                 <div class="panel-body row">
                   <div class="col-xs-12 col-md-6">
                     <youtube :video-id="getVideoId(video.url)" class="youtube-player" v-if="video.url"></youtube>
@@ -38,7 +38,7 @@
           </div>
         </div>
         <!-- Sidebar -->
-        <div class="col-xs-12 col-md-3">
+        <div class="col-xs-12 col-md-4">
           <Sidebar />
         </div>
       </div>
@@ -61,10 +61,10 @@
             <!--  -->
             <div class="widget--more-box" v-for="item in recommandations" :key="item.id">
               <div class="widget--more-boxing">
-                <h2 class="my-0">
+                <h4 class="my-0">
                   <strong v-if="french">{{item.title_fr}}</strong>
                   <strong v-if="english">{{item.title_en}}</strong>
-                </h2>
+                </h4>
                 <router-link tag="button" type="button" class="btn widget--brand widget--radius-link mr-4 widget--position" :to="item.link">
                   <i class="fa fa-angle-right mr-2" aria-hidden="true"></i>
                   <span v-if="french">Lire plus</span>

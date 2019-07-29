@@ -253,6 +253,7 @@ export default new Vuex.Store({
       {"name": "Zambia", "code": "ZM"},
       {"name": "Zimbabwe", "code": "ZW"}
     ],
+    alaune: [],
     loading: false,
     language: 'en',
     homepage: [],
@@ -268,6 +269,9 @@ export default new Vuex.Store({
     webinars: [],
   },
   getters: {
+    alaune: (state) => {
+      return state.newsAndPublications.filter(news => news.alaune == true)
+    },
     countryList: state => state.countryList,
     categories: state => state.categories,
     loading: state => state.loading,
@@ -277,7 +281,9 @@ export default new Vuex.Store({
       return _.sortBy(state.about, [function(option) {return option.priority}])
     },
     getAbout: (state) => (id) => state.about.find(single => single.id === id),
-    brochures: state => state.brochures,
+    brochures: state => {
+      return _.orderBy(state.brochures, [function(brochure) {return brochure.priority}])
+    },
     getBrochure: (state) => (id) => state.brochures.find(brochure => brochure.id === id),
     services (state) {
       return _.sortBy(state.services, [function(service) {return service.priority}])
@@ -291,7 +297,10 @@ export default new Vuex.Store({
       return _.sortBy(state.presences, [function(presence) {return presence.priority}])
     },
     getPresence: (state) => (id) => state.presences.find(presence => presence.id === id),
-    newsAndPublications: state => state.newsAndPublications,
+    newsAndPublications: (state) => {
+      return _.sortBy(state.newsAndPublications, [function(news) {return news.publishedAt}])
+    },
+    publication: (state) => (id) => state.newsAndPublications.find(publication => publication.id === id),
     webinars: state => state.webinars,
     // getNewsPublication: (state) => (id) => state.newsAndPublications.find(newsPublication => newsPublication.id === id),
     multimedia: state => state.multimedia,

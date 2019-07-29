@@ -3,7 +3,7 @@
     <div class="row">
       <!--  -->
       <div class="col-xs-12 col-sm-6 col-md-12 pr-md-3 p-0 pr-lg-0">
-        <div class="secondary--background widget--home-experts-two p-3">
+        <div class="secondary--background widget--home-experts-two p-3 pl-4">
           <h4 class="mb-4 text-uppercase">
             <strong v-if="french">NOS EXPERTS</strong>
             <strong v-if="english">OUR EXPERTS</strong>
@@ -25,11 +25,11 @@
                       <span v-if="english">{{expert.grade_en}}</span>
                     </div>
                     <div class="font-small widget--subtitle text-capitalize"><span class="glyphicon glyphicon-map-marker mr-2" aria-hidden="true"></span>
-                      {{expert.location_1}} <span v-if="expert.location_2">/ {{expert.location_2}}</span> <span v-if="expert.location_3">/ {{expert.location_3}}</span>
+                      {{expert.location_1}} <span v-if="expert.location_2">• {{expert.location_2}}</span> <span v-if="expert.location_3">• {{expert.location_3}}</span>
                     </div>
                     <div class="font-small widget--subtitle">
                       <span class="glyphicon glyphicon-earphone mr-2" aria-hidden="true"></span>
-                      {{expert.phone_1}} <span v-if="expert.phone_2"> / {{expert.phone_2}}</span> <span v-if="expert.phone_3"> / {{expert.phone_3}}</span>
+                      {{expert.phone_1}} <span v-if="expert.phone_2"> • {{expert.phone_2}}</span> <span v-if="expert.phone_3"> • {{expert.phone_3}}</span>
                     </div>
                     <div class="font-small widget--subtitle"><i class="fa fa-envelope-open-o mr-2" aria-hidden="true"></i> {{expert.email}}</div>
                     <button class="btn btn-sm widget--radius-link mt-2" @click="gotoProfile(expert.id)">
@@ -45,31 +45,56 @@
       </div>
       <!--  -->
       <div class="col-xs-12 col-sm-6 col-md-12 pl-md-3 pl-lg-0 mt-4 mt-md-0 mt-lg-4">
-        <div class="secondary--background widget--home-experts-three p-3">
+        <div class="secondary--background widget--home-experts-three p-3 pl-4">
           <h4 class="mb-4">
             <strong v-if="french">NOS BROCHURES</strong>
             <strong v-if="english">OUR BROCHURES</strong>
           </h4>
           <div class="widget--news">
             <Carousel :perPage="1" :autoplay="true" :autoplayTimeout="5000" :paginationEnabled="false">
-              <Slide v-for="brochure in brochures" :key="brochure.id">
-                <img :data-src="brochure.cover" alt="" class="lazyload widget--brochure-img" v-if="brochure.cover">
-                <div class="widget--box-fade d-flex flex-row align-items-center justify-content-center" v-if="!brochure.cover">
-                  <img src="../assets/logo-white.png" alt="">
+              <Slide v-for="brochure in brochures" :key="brochure.id" v-if="french && brochure.language == 'french'">
+                <div class="row">
+                  <div class="col-xs-5">
+                    <img :data-src="brochure.cover" alt="" class="lazyload widget--brochure-img" v-if="brochure.cover">
+                    <div class="widget--box-fade d-flex flex-row align-items-center justify-content-center" v-if="!brochure.cover">
+                      <img src="../assets/logo-white.png" alt="">
+                    </div>
+                  </div>
+                  <div class="col-xs-7 pl-0">
+                    <h5 class="widget--title mt-0">
+                      <span>{{brochure.title}}</span>
+                    </h5>
+                    <h6 class="widget--subtitle">
+                      <span v-html="brochure.description"></span>
+                    </h6>
+                    <a :href="brochure.download_link" class="widget--brand-color pointer font-small mt-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-download mr-1"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                      <strong v-if="french">Télécharger</strong>
+                    </a>
+                  </div>
                 </div>
-                <h5 class="widget--title">
-                  <span>{{brochure.title_fr}}</span>
-                  <!-- <span v-if="english">{{brochure.title_en}}</span> -->
-                </h5>
-                <h6 class="widget--subtitle">
-                  <span v-html="brochure.description_fr"></span>
-                  <!-- <span v-if="english">{{brochure.description_en}}</span> -->
-                </h6>
-                <a :href="brochure.download_link" class="widget--brand-color pointer font-small mt-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-download mr-1"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                  <strong v-if="french">Télécharger</strong>
-                  <strong v-if="english">Download</strong>
-                </a>
+              </Slide>
+              <Slide v-for="brochure in brochures" :key="brochure.id" v-if="english && brochure.language == 'english'">
+                <div class="row">
+                  <div class="col-xs-5">
+                    <img :data-src="brochure.cover" alt="" class="lazyload widget--brochure-img" v-if="brochure.cover">
+                    <div class="widget--box-fade d-flex flex-row align-items-center justify-content-center" v-if="!brochure.cover">
+                      <img src="../assets/logo-white.png" alt="">
+                    </div>
+                  </div>
+                  <div class="col-xs-7 pl-0">
+                    <h5 class="widget--title mt-0">
+                      <span>{{brochure.title}}</span>
+                    </h5>
+                    <h6 class="widget--subtitle">
+                      <span v-html="brochure.description"></span>
+                    </h6>
+                    <a :href="brochure.download_link" class="widget--brand-color pointer font-small mt-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-download mr-1"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                      <strong v-if="english">Download</strong>
+                    </a>
+                  </div>
+                </div>
               </Slide>
             </Carousel>
           </div>

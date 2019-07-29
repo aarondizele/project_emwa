@@ -28,15 +28,28 @@ export default {
         $('select.form-control').removeClass('form-control').css('width', '100%')
       }
     })
+
+    this.$store.dispatch('getHomePage')
+    this.$store.dispatch('getCategories')
+    this.$store.dispatch('getBrochures')
+    this.$store.dispatch('getExperts')
+    this.$store.dispatch('getAbout')
+    this.$store.dispatch('getServices')
+    this.$store.dispatch('getPracticeAreas')
+    this.$store.dispatch('getPresences')
+    this.$store.dispatch('getNewsAndPublications')
+    this.$store.dispatch('getMultimedia')
   }
 }
 </script>
 
 <style lang="scss">
 // <!-- @Import Styles -->
-@import './styles/w3.css';
+// @import './styles/w3.css';
 @import './styles/fonts.css';
 @import './styles/style.css';
+@import './styles/pace.css';
+@import './styles/w3.css';
 @import '../static/icons/css/simple-line-icons.css';
 
 iframe[id^="youtube-player"] {

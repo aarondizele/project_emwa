@@ -26,7 +26,7 @@
               <router-link tag="a" to="/newsletter" class="p-0">
                 <i class="icon-envelope-letter mr-1" aria-hidden="true"></i>
                 <!-- <i class="fa fa-envelope-open mr-1" aria-hidden="true"></i> -->
-                <span v-if="english">Subscribe to newsletter</span>
+                <span v-if="english">Subscribe to the newsletter</span>
                 <span v-if="french">S'abonner à la newsletter</span>
               </router-link>
             </a>
@@ -44,6 +44,10 @@
         <div class="w3-bar-item px-0 w3-right">
           <div class="w3-bar">
             <a class="w3-bar-item px-0 w3-hide-medium w3-hide-large text-center pr-2">
+              <small class="my-0">
+                <span v-if="english">Open: <strong>Monday - Friday</strong></span>
+                <span v-if="french">Ouvert: <strong>Lundi - Vendredi</strong></span>
+              </small>
               <h6 class="mt-0 mb-1">
                 <strong>
                   <i class="icon-clock widget--icon-large mr-1" aria-hidden="true"></i>
@@ -56,20 +60,16 @@
                   +(1) 2129220040
                 </strong>
               </h6>
-              <small class="my-0">
-                <span v-if="english">Open: <strong>Monday - Friday</strong></span>
-                <span v-if="french">Ouvert: <strong>Lundi - Vendredi</strong></span>
-              </small>
             </a>
             <!-- <li class="w3-hide-medium w3-hide-large"><i class="fa fa-bars w3-xxlarge pr-3" aria-hidden="true"></i></li> -->
             <a class="w3-bar-item px-0 mr-4 text-center w3-hide-small">
-              <h4 class="mb-1">
-                <strong><i class="icon-clock widget--icon-large" aria-hidden="true"></i> 09H00 - 18H00 | <i class="icon-earphones-alt widget--icon-large" aria-hidden="true"></i> +(1) 2129220040</strong>
-              </h4>
               <small class="w3-medium mt-0">
                 <span v-if="english">Open: <strong>Monday - Friday</strong></span>
                 <span v-if="french">Ouvert: <strong>Lundi - Vendredi</strong></span>
               </small>
+              <h4 class="mb-1">
+                <strong><i class="icon-clock widget--icon-large" aria-hidden="true"></i> 09H00 - 18H00 | <i class="icon-earphones-alt widget--icon-large" aria-hidden="true"></i> +(1) 2129220040</strong>
+              </h4>              
             </a>
           </div>
         </div>

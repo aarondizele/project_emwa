@@ -16,7 +16,7 @@
                 <strong v-if="english">About us</strong>
               </h3>
               <p class="mb-3">
-                <span v-if="english">Over the past 20 years, Emery Mukendi Wafwana & Associates (EMW&A) maintains its position as a leading international African law firm with a prominent business and mining practice. We have been offering our clients with legal services meeting best international standards, with an established expertise in the following areas: natural resources; energy and infrastructure; investments, trade and industry; banking, finance and insurance; family and people.</span>
+                <span v-if="english">For more than 20 years, Emery Mukendi Wafwana & Associates (EMW&A) has maintained its position as a leading African international law firm of reference, with recognized experience in business law, litigation and arbitration. We offer our clients services that are in line with international standards. We have proven experience in the sectors of natural resources, energy and infrastructure, investments, commerce and industry, banking, finance and insurance as well as family and people.</span>
                 <!--  -->
                 <span v-if="french">Depuis plus de 20 ans, Emery Mukendi Wafwana & Associates (EMW&A) maintient sa position de cabinet international africain de premier plan avec une pratique reconnue en droit des affaires et en droit minier. Nous offrons à nos clients des services conformes aux meilleurs standards internationaux, avec une expertise solidement établi dans les secteurs ci-après : ressources naturelles ; énergie et infrastructures; investissement, commerce et industrie; banques, finances et assurances ; famille et personnes.</span>
               </p>
@@ -117,25 +117,7 @@
               <strong v-if="french">ACTUALITÉS</strong>
               <strong v-if="english">News</strong>
             </h3>
-            <div class="carousel">
-              <div class="carousel-slide">
-                <div class="widget--news">
-                  <div class="widget--box-fade d-flex flex-row align-items-center justify-content-center">
-                    <img src="../assets/logo-white.png" alt="">
-                    <!-- <img data-src="https://images.vrt.be/width320/2019/01/20/e2b880a3-1ca3-11e9-abcc-02b7b76bf47f.jpg" alt="" class="widget--news-img"> -->
-                  </div>
-                  <h5 class="widget--title">Theo Francken contredit l’Office des étrangers à propos du screening des candidats à un visa humanitaire</h5>
-                  <h6 class="widget--subtitle">
-                    <span class="mr-4"><i class="fa fa-clock-o" aria-hidden="true"></i> 30 min</span>
-                    <span>
-                      <svg
-                      xmlns="http://www.w3.org/2000/svg" width="11px" height="11px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>
-                    </svg>
-                    Auteur</span>
-                  </h6>
-                </div>
-              </div>
-            </div>
+            <Alaune />
           </div>
         </div>
       </section>
@@ -208,7 +190,7 @@
           <div class="col-xs-12 col-sm-6 col-md-4">
             <div class="row mt-4 mt-lg-0 pl-lg-4">
               <div class="col-xs-12 widget--home-experts secondary--background">
-                <h3 class="mb-5 text-uppercase">
+                <h3 class="mb-4 text-uppercase">
                   <strong v-if="english">Our experts</strong>
                   <strong v-if="french">Nos experts</strong>
                 </h3>
@@ -228,13 +210,15 @@
 <script>
 // @ is an alias to /src
 import HomeCarousel from '@/components/HomeCarousel.vue'
+import Alaune from '@/components/Alaune.vue'
 import { languageMixin } from '../mixins/language'
 
 export default {
   name: 'home',
   mixins: [languageMixin],
   components: {
-    HomeCarousel
-  }
+    HomeCarousel,
+    Alaune
+  },
 }
 </script>

@@ -79,6 +79,11 @@ export default new Router({
       component: () => import('./views/newsPublications/Publications.vue')
     },
     {
+      path: '/publication/:id',
+      props: true,
+      component: () => import('./views/publications/Publication.vue')
+    },
+    {
       path: '/webinars',
       component: () => import('./views/newsPublications/Webinars.vue')
     },

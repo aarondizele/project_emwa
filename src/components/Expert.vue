@@ -16,11 +16,11 @@
               <span v-if="english">{{expert.grade_en}}</span>
             </div>
             <div class="font-small widget--subtitle text-capitalize"><span class="glyphicon glyphicon-map-marker mr-2" aria-hidden="true"></span>
-              {{expert.location_1}} <span v-if="expert.location_2">/ {{expert.location_2}}</span> <span v-if="expert.location_3">/ {{expert.location_3}}</span>
+              {{expert.location_1}} <span v-if="expert.location_2">• {{expert.location_2}}</span> <span v-if="expert.location_3">• {{expert.location_3}}</span>
             </div>
             <div class="font-small widget--subtitle">
               <span class="glyphicon glyphicon-earphone mr-2" aria-hidden="true"></span>
-              {{expert.phone_1}} <span v-if="expert.phone_2"> / {{expert.phone_2}}</span> <span v-if="expert.phone_3"> / {{expert.phone_3}}</span>
+              {{expert.phone_1}} <span v-if="expert.phone_2"> • {{expert.phone_2}}</span> <span v-if="expert.phone_3"> • {{expert.phone_3}}</span>
             </div>
             <div class="font-small widget--subtitle"><i class="fa fa-envelope-open-o mr-2" aria-hidden="true"></i> {{expert.email}}</div>
             <button class="btn btn-sm widget--radius-link mt-4" @click="gotoProfile(expert.id)">
