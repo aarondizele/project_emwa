@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="mb-4">
-      <Header />
+      <NewHeader />
     </div>
     <transition name="slide" appear mode="out-in">
       <router-view />
@@ -9,18 +9,35 @@
     <section class="widget--footer-main">
       <Footer />
     </section>
+    <!-- Scroll Button -->
+    <button @click="topFunction" id="myBtn" title="Go to top">
+        <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change:transform"
+            xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" aria-hidden="true"
+            fill="currentColor">
+            <path d="M16 13L6 23l1.41 1.41L16 15.83l8.59 8.58L26 23 16 13zM4 7h24v2H4z" />
+        </svg>
+    </button>
   </div>
 </template>
 
 <script>
 import Header from '@/components/Header'
+import NewHeader from '@/components/NewHeader'
 import Footer from '@/components/Footer'
 export default {
   components: {
     Header,
+    NewHeader,
     Footer
   },
-  created() {
+  methods: {
+    topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+  },
+  mounted() {
+    console.log("Mounted App")
     $(function () {
       var nua = navigator.userAgent
       var isAndroid = (nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Android ') > -1 && nua.indexOf('AppleWebKit') > -1 && nua.indexOf('Chrome') === -1)
@@ -29,17 +46,35 @@ export default {
       }
     })
 
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+
+    window.onscroll = function() {
+      scrollFunction()
+    };
+
+    //Get the button:
+    var mybutton = document.getElementById("myBtn");
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+
     this.$store.dispatch('getHomePage')
     this.$store.dispatch('getCategories')
     this.$store.dispatch('getBrochures')
-    this.$store.dispatch('getExperts')
     this.$store.dispatch('getAbout')
     this.$store.dispatch('getServices')
     this.$store.dispatch('getPracticeAreas')
     this.$store.dispatch('getPresences')
     this.$store.dispatch('getNewsAndPublications')
     this.$store.dispatch('getMultimedia')
-  }
+  },
 }
 </script>
 
@@ -51,6 +86,7 @@ export default {
 @import './styles/pace.css';
 @import './styles/w3.css';
 @import '../static/icons/css/simple-line-icons.css';
+@import './css/style.css';
 
 iframe[id^="youtube-player"] {
   width: 100%!important;

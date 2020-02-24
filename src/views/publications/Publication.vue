@@ -11,7 +11,7 @@
     <!--  -->
     <section class="container">
       <div class="row">
-        <div class="col-xs-12 col-md-8 pr-md-5">
+        <div class="col-12 col-md-8 pr-md-5">
           <!--  -->
           <div class="my-widget--slide w3-display-container  mb-5">
             <img src="../../assets/logo-white.png" alt="" class="my-widget--placeholder w3-display-middle">
@@ -27,7 +27,7 @@
           <p class="text-justify" v-html="publication.content_fr" v-if="french && publication.content_fr"></p>
         </div>
         <!-- Sidebar -->
-        <div class="col-xs-12 col-md-4">
+        <div class="col-12 col-md-4">
           <Sidebar />
         </div>
       </div>

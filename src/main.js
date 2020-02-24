@@ -1,3 +1,4 @@
+// require('./js/flexibility.js')
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
@@ -5,8 +6,8 @@ import store from './store'
 import firebase from 'firebase/app'
 require('firebase/firestore')
 require('lazysizes')
-require('./js/pace.min.js')
 require('clipboard')
+require('./js/pace.min.js')
 import VueCarousel from 'vue-carousel';
 import { Carousel, Slide } from 'vue-carousel';
 import Expert from '@/components/Expert'
@@ -17,6 +18,8 @@ import Share from '@/components/Share'
 import VueYouTubeEmbed from 'vue-youtube-embed'
 import _ from 'lodash'
 import DateFilter from './filters/date'
+
+import Slick from 'vue-slick';
 //
 firebase.initializeApp({
     apiKey: "AIzaSyBBI3rcXvI8OKPqfoF3LaFcs0CjwG8aIbE",
@@ -37,6 +40,8 @@ Vue.component('Office', Office)
 Vue.component('Profile', Profile)
 Vue.component('Sidebar', Sidebar)
 Vue.component('Share', Share)
+// Slick 
+Vue.component('Slick', Slick)
 Vue.use(VueCarousel);
 Vue.use(VueYouTubeEmbed)
 Vue.filter('date', DateFilter)
@@ -50,6 +55,7 @@ new Vue({
     render: h => h(App),
     created() {
         //
+        this.$store.dispatch('getExperts');
         this.$store.dispatch('getLanguage')
             //
         if (this.$store.getters.language == null || this.$store.getters.language == undefined) {

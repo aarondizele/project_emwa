@@ -3,11 +3,11 @@
     <div class="panel panel-default shadow-sm widget--borderless mb-5" @click="gotoProfile(expert.id)">
       <div class="panel-body p-2 row">
         <!-- Picture -->
-        <div class="col-xs-6 col-md-5">
+        <div class="col-6 col-md-5">
             <img :src="expert.avatar" class="img-responsive profile-image rounded" :alt="expert.name" v-if="expert.avatar" @click="gotoProfile(expert.id)">
         </div>
         <!-- Info -->
-        <div class="col-xs-6 col-md-7 py-1 pl-1 caption main-color">
+        <div class="col-6 col-md-7 py-1 pl-1 caption main-color">
           <!-- Name -->
           <h4 class="body-2 my-title brand-color" @click="gotoProfile(expert.id)">{{expert.name}}</h4>
           <!-- Grade -->

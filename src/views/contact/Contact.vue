@@ -12,9 +12,9 @@
     <!--  -->
     <section class="container mt-5">
       <div class="row">
-        <div class="col-xs-12 col-md-8 pr-md-5">
+        <div class="col-12 col-md-8 pr-md-5">
           <div class="row">
-            <div class="col-xs-12 col-sm-6" v-for="(presence, i) in presences" :key="presence.id" v-if="(i+1) % 2">
+            <div class="col-12 col-sm-6" v-for="(presence, i) in presences" :key="presence.id" v-if="(i+1) % 2">
               <div class="panel panel-default widget--card-contact w-100 secondary--background widget--card-contact widget--borderless">
                 <div class="panel-body">
                   <h3 class="mt-0">
@@ -30,7 +30,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-xs-12 col-sm-6" v-for="(presence, i) in presences" :key="presence.id" v-if="(i+2) % 2">
+            <div class="col-12 col-sm-6" v-for="(presence, i) in presences" :key="presence.id" v-if="(i+2) % 2">
               <div class="panel panel-default widget--card-contact w-100 secondary--background widget--card-contact widget--borderless">
                 <div class="panel-body">
                   <h3 class="mt-0">
@@ -50,7 +50,7 @@
           <Share :link="$route.fullPath" />
         </div>
         <!-- Sidebar -->
-        <div class="col-xs-12 col-md-4">
+        <div class="col-12 col-md-4">
           <Sidebar />
         </div>
       </div>

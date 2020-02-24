@@ -12,11 +12,11 @@
     <!--  -->
     <section class="container mt-5">
       <div class="row">
-        <div class="col-xs-12 col-md-8 pr-md-5">
+        <div class="col-12 col-md-8 pr-md-5">
 
         </div>
         <!-- Sidebar -->
-        <div class="col-xs-12 col-md-4">
+        <div class="col-12 col-md-4">
           <Sidebar />
         </div>
       </div>

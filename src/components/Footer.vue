@@ -1,5 +1,5 @@
 <template lang="html">
-  <footer>
+  <footer style="background-color:#F4F6F8!important">
     <nav class="container py-3">
       <div class="container">
         <div class="w3-bar widget--bar">
@@ -13,7 +13,7 @@
           </router-link>
 
           <router-link tag="a" to="/newsletter" class="w3-bar-item w3-right w3-medium widget--navigation widget--title">
-            <i class="icon-envelope-letter mr-1" aria-hidden="true"></i>
+            <i class="fal fa-envelope-open mr-2"></i>
             <span v-if="english">Subscribe to newsletter</span>
             <span v-if="french">S'abonner à la newsletter</span>
           </router-link>

@@ -4,25 +4,25 @@
       <a
         class="widget--hover-color mx-3"
         @click="shareTwitter"
-        data-toggle="tooltip"
+        data-tooltip="tooltip"
         data-placement="top"
         :title="shareOnTwitterMessage"
       >
-        <i class="fa fa-twitter" aria-hidden="true"></i>
+        <i class="fab fa-twitter" aria-hidden="true"></i>
       </a>
       <a
         class="widget--hover-color mx-3"
         @click="shareFacebook"
-        data-toggle="tooltip"
+        data-tooltip="tooltip"
         data-placement="top"
         :title="shareOnFacebookMessage"
       >
-        <i class="fa fa-facebook-official" aria-hidden="true"></i>
+        <i class="fab fa-facebook" aria-hidden="true"></i>
       </a>
-      <!-- <span class="widget--hover-color mx-3" data-toggle="tooltip" data-placement="top" :title="shareOnFacebookMessage">
+      <!-- <span class="widget--hover-color mx-3" data-tooltip="tooltip" data-placement="top" :title="shareOnFacebookMessage">
               <i class="fa fa-facebook-official" aria-hidden="true"></i>
       </span>-->
-      <!-- <span class="widget--hover-color mx-3" data-toggle="tooltip" data-placement="top" :title="directMessage">
+      <!-- <span class="widget--hover-color mx-3" data-tooltip="tooltip" data-placement="top" :title="directMessage">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 53 44" fill="currentColor" focusable="false" class="widget--hover-color">
                 <path d="M53,11v33H0V11c4.3,10.3,14.6,17.6,26.5,17.6C38.4,28.6,48.7,21.3,53,11z M2.2,0c0,13.4,10.9,24.2,24.3,24.2
                 c13.4,0,24.3-10.8,24.3-24.2"></path>
@@ -30,7 +30,7 @@
       </span>-->
       <a
         class="widget--hover-color mx-3"
-        data-toggle="tooltip"
+        data-tooltip="tooltip"
         data-placement="top"
         :title="shareLinkMessage"
         :data-clipboard-text="fullLink"
@@ -49,7 +49,7 @@
       </a>
       <a
         class="mx-3"
-        data-toggle="tooltip"
+        data-tooltip="tooltip"
         data-placement="top"
         :title="printMessage"
         @click="printPage"

@@ -1,6 +1,17 @@
 import { mapGetters } from 'vuex'
 
 export const languageMixin = {
+  data: () => ({
+    slickCoverOptions: {
+      arrows: false,
+      dots:false,
+      infinite: true,
+      autoplay: true,
+      autoplaySpeed: 3500,
+      fade:true,
+      adaptiveHeight: true
+    },
+  }),
   computed: {
     ...mapGetters(['language', 'categories', 'experts']),
     english() {

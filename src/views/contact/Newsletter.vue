@@ -12,7 +12,7 @@
     <!--  -->
     <section class="container mt-5">
       <div class="row">
-        <div class="col-xs-12 col-md-8 pr-md-5">
+        <div class="col-12 col-md-8 pr-md-5">
           <form @submit.prevent="onSubscribe" class="panel secondary--background widget--card-content widget--borderless" v-if="!formSent">
             <div class="panel-body p-5">
               <div class="form-group">
@@ -61,7 +61,7 @@
           </div>
         </div>
         <!-- Sidebar -->
-        <div class="col-xs-12 col-md-4">
+        <div class="col-12 col-md-4">
           <Sidebar />
         </div>
       </div>

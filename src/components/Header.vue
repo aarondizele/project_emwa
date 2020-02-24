@@ -38,7 +38,7 @@
         </div>
       </div>
     </div>
-    <div class="container">
+    <div class="container" style="">
       <div class="w3-bar">
         <router-link tag="a" to="/" class="w3-bar-item px-0"><img src="../assets/logo.png" alt="" class="Widget--main-logo"></router-link>
         <div class="w3-bar-item px-0 w3-right">

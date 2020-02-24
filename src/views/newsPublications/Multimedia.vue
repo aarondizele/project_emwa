@@ -12,25 +12,25 @@
     <!--  -->
     <section class="container mt-5">
       <div class="row">
-        <div class="col-xs-12 col-md-8 pr-md-5">
+        <div class="col-12 col-lg-8 pr-md-5">
           <div class="row">
-            <div class="col-xs-12" v-for="video in multimedia" :key="video.id">
+            <div class="col-12 col-lg-6 mb-6" v-for="video in multimedia" :key="video.id">
               <div class="panel panel-default w-100 secondary--background widget--multimedia widget--borderless">
                 <div class="panel-body row">
-                  <div class="col-xs-12 col-md-6">
+                  <div class="col-12 col-md-6 col-lg-12">
                     <youtube :video-id="getVideoId(video.url)" class="youtube-player" v-if="video.url"></youtube>
                   </div>
-                  <div class="col-xs-12 col-md-6">
-                    <h3 v-if="english && video.title_en" class="mt-1">{{video.title_en}}</h3>
-                    <h3 v-if="french && video.title_fr || !video.title_en" class="mt-1">{{video.title_fr}}</h3>
-                    <h4 class="widget--title mt-2" v-if="video.authors">
+                  <div class="col-12 col-md-6 col-lg-12 mt-4">
+                    <h6 v-if="english && video.title_en" class="mt-1">{{video.title_en}}</h6>
+                    <h6 v-if="french && video.title_fr || !video.title_en" class="mt-1">{{video.title_fr}}</h6>
+                    <div class="widget--title my-2" v-if="video.authors">
                       <strong v-for="(author, n) in video.authors" :key="author">
                         {{author}} <span v-if="n > 1" class="mx-1">/</span>
                       </strong>
-                    </h4>
-                    <p v-if="video.description_en && english">{{video.description_en}}</p>
-                    <p v-if="video.description_fr && french">{{video.description_fr}}</p>
-                    <h5 class="mt-4" v-if="video.createdAt"><i class="fa fa-clock-o mr-1" aria-hidden="true"></i> {{video.createdAt | date}}</h5>
+                    </div>
+                    <p v-if="video.description_en && english" v-html="video.description_en"></p>
+                    <p v-if="video.description_fr && french" v-html="video.description_fr"></p>
+                    <div class="mt-3 caption" v-if="video.createdAt"><i class="fa fa-clock-o mr-1" aria-hidden="true"></i> {{video.createdAt | date}}</div>
                   </div>
                 </div>
               </div>
@@ -38,38 +38,39 @@
           </div>
         </div>
         <!-- Sidebar -->
-        <div class="col-xs-12 col-md-4">
+        <div class="col-12 col-lg-4">
           <Sidebar />
         </div>
       </div>
     </section>
+
+
     <!-- Learn more -->
     <section v-if="recommandations.length">
-      <div class="container mt-5 mb-3">
-        <h4 class="pull-left widget--see-more">
+      <div class="container _flex _between mt-5 mb-3">
+        <h5 class="widget--see-more">
           <span v-if="french">Voir aussi</span>
           <span v-if="english">See more</span>
-        </h4>
-        <div class="pull-right">
-          <a @click="scrollRight" class="widget--hover-brand-color pointer"><i class="fa fa-angle-left mr-4 w3-xxlarge"></i></a>
-          <a @click="scrollLeft" class="widget--hover-brand-color pointer"><i class="fa fa-angle-right w3-xxlarge"></i></a>
+        </h5>
+        <div class="">
+          <a @click="scrollRight" class="widget--hover-brand-color pointer"><i class="fal fa-angle-left mr-4 w3-xxlarge"></i></a>
+          <a @click="scrollLeft" class="widget--hover-brand-color pointer"><i class="fal fa-angle-right w3-xxlarge"></i></a>
         </div>
       </div>
       <div class="primary--background">
         <div class="container py-4">
           <div class="d-flex flex-nowrap flex-row align-items-center widget--more" id="widget--more">
-            <!--  -->
             <div class="widget--more-box" v-for="item in recommandations" :key="item.id">
               <div class="widget--more-boxing">
-                <h4 class="my-0">
-                  <strong v-if="french">{{item.title_fr}}</strong>
-                  <strong v-if="english">{{item.title_en}}</strong>
-                </h4>
-                <router-link tag="button" type="button" class="btn widget--brand widget--radius-link mr-4 widget--position" :to="item.link">
-                  <i class="fa fa-angle-right mr-2" aria-hidden="true"></i>
+                <h5 class="my-0">
+                  <strong v-if="french && item.title_fr">{{item.title_fr}}</strong>
+                  <strong v-if="english && item.title_en">{{item.title_en}}</strong>
+                </h5>
+                <button type="button" class="btn widget--brand widget--radius-link mr-4 widget--position" @click="goto({url: '/about', data: item})">
+                  <i class="fal fa-angle-right mr-2" aria-hidden="true"></i>
                   <span v-if="french">Lire plus</span>
                   <span v-if="english">Read more</span>
-                </router-link>
+                </button>
               </div>
             </div>
           </div>

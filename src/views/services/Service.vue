@@ -1,7 +1,20 @@
 <template lang="html">
   <div>
     <!--  -->
-    <section class="container">
+    <section class="container" v-if="content && content.covers && content.covers.length">
+      <slick
+        ref="slick"
+        :options="slickCoverOptions"
+      >
+        <div v-for="image in content.covers" :key="image" v-if="content && content.covers">
+          <div class="my-widget--slide w3-display-container">
+            <img src="../../assets/logo-white.png" alt="" class="my-widget--placeholder w3-display-middle">
+            <img :data-src="image" alt="" class="my-widget--slide-content lazyload">
+          </div>
+        </div>
+      </slick>
+    </section>
+    <!-- <section class="container">
       <Carousel :perPage="1" :autoplay="true" :autoplayTimeout="5000" paginationActiveColor="#CF9405">
         <Slide v-for="image in content.covers" :key="image">
           <div class="my-widget--slide w3-display-container">
@@ -10,22 +23,23 @@
           </div>
         </Slide>
       </Carousel>
-    </section>
+    </section> -->
 
     <!-- Navigation -->
     <section class="container my-3">
-      <ul class="nav nav-tabs widget--nav-tabs text-uppercase widget--subtitle font-medium" role="tablist">
-        <li role="presentation" class="active">
-          <a href="#overview" aria-controls="overview" role="tab" data-toggle="tab">
+      <ul class="nav nav-pills widget--nav-tabs text-uppercase widget--subtitle font-medium" role="tablist">
+        <li class="nav-item">
+          <a href="#overview" aria-selected="true" aria-controls="overview" class="nav-link active" role="tab" data-toggle="tab">
             <span v-if="french">Sommaire</span>
             <span v-if="english">Overview</span>
           </a>
         </li>
-        <li role="presentation">
-          <a href="#publications" aria-controls="publications" role="tab" data-toggle="tab">Publications
+        <li class="nav-item">
+          <a href="#publications" aria-selected="false" aria-controls="publications" class="nav-link" role="tab" data-toggle="tab">Publications
           </a>
         </li>
-        <li role="presentation"><a href="#team" aria-controls="team" role="tab" data-toggle="tab">
+        <li class="nav-item">
+          <a href="#team" aria-selected="false" aria-controls="team" class="nav-link" role="tab" data-toggle="tab">
           <span class="text-uppercase" v-if="french">équipe</span>
           <span class="text-uppercase" v-if="english">team</span>
         </a></li>
@@ -35,11 +49,11 @@
     <!--  -->
     <section class="container mt-4">
       <div class="row">
-        <div class="col-xs-12 col-md-8 pr-md-5">
+        <div class="col-12 col-md-8 pr-md-5">
           <!-- Tab panes -->
           <div class="tab-content">
             <!-- Overview - Sommaire -->
-            <article role="tabpanel" class="tab-pane fade in active" id="overview">
+            <article role="tabpanel" class="tab-pane fade show active text-justify" id="overview" aria-labelledby="overview-tab">
               <h2 class="page-header mt-0">
                 <strong v-if="english">{{content.title_en}}</strong>
                 <strong v-if="french">{{content.title_fr}}</strong>
@@ -52,29 +66,33 @@
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                   <div class="panel" v-for="(subcontent, i) in content.subcontents" :key="subcontent.title_fr">
                     <div class="panel-heading px-0 my-title" role="tab" :id="`heading${i}`">
-                      <h5 class="panel-title mb-2">
+                      <h6 class="panel-title mb-2">
                         <a class="collapsed text-uppercase" role="button" data-toggle="collapse" data-parent="#accordion" :href="`#collapse${i}`" aria-expanded="false" :aria-controls="`collapse${i}`">
                           <span v-if="french">{{subcontent.title_fr}}</span>
                           <span v-if="english">{{subcontent.title_en}}</span>
-                          <span class="fa fa-angle-down pull-right" aria-hidden="true"></span>
+                          <span class="fal fa-angle-down pull-right" aria-hidden="true"></span>
                         </a>
-                      </h5>
+                      </h6>
                     </div>
                     <div :id="`collapse${i}`" class="panel-collapse collapse" role="tabpanel" :aria-labelledby="`heading${i}`">
                       <div class="panel-body px-1 pt-2">
                         <div>
                           <!-- Nav tabs -->
-                          <ul class="nav nav-tabs text-uppercase font-weight-medium" role="tablist">
-                            <li role="presentation" class="active"><a :href="`#service${i}`" :aria-controls="`service${i}`" role="tab" data-toggle="tab">Services</a></li>
-                            <li role="presentation"><a :href="`#transaction${i}`" :aria-controls="`transaction${i}`" role="tab" data-toggle="tab">Transactions</a></li>
+                          <ul class="nav nav-pills text-uppercase font-weight-medium" role="tablist">
+                            <li class="nav-item">
+                              <a :href="`#service${i}`" :aria-controls="`service${i}`" role="tab" data-toggle="tab" class="nav-link active" aria-selected="true">Services</a>
+                            </li>
+                            <li class="nav-item">
+                              <a :href="`#transaction${i}`" :aria-controls="`transaction${i}`" role="tab" data-toggle="tab" class="nav-link" aria-selected="false">Transactions</a>
+                            </li>
                           </ul>
                           <!-- Tab panes -->
                           <div class="tab-content py-4">
-                            <div role="tabpanel" class="tab-pane active" :id="`service${i}`">
+                            <div role="tabpanel" class="tab-pane fade show active" :id="`service${i}`">
                               <div class="text-justify" v-html="subcontent.service_en" v-if="english"></div>
                               <div class="text-justify" v-html="subcontent.service_fr" v-if="french"></div>
                             </div>
-                            <div role="tabpanel" class="tab-pane" :id="`transaction${i}`">
+                            <div role="tabpanel" class="tab-pane fade" :id="`transaction${i}`">
                               <div class="text-justify" v-html="subcontent.transaction_en" v-if="english"></div>
                               <div class="text-justify" v-html="subcontent.transaction_fr" v-if="french"></div>
                             </div>
@@ -87,25 +105,25 @@
               </p>
             </article>
             <!-- Publications -->
-            <article role="tabpanel" class="tab-pane fade" id="publications">
+            <article role="tabpanel" class="tab-pane fade" id="publications" aria-labelledby="publications-tab">
 
             </article>
             <!-- Team -->
-            <article role="tabpanel" class="tab-pane fade" id="team">
+            <article role="tabpanel" class="tab-pane fade" id="team" aria-labelledby="team-tab">
               <div class="row">
-                <div class="col-xs-12 col-md-6">
+                <div class="col-12 col-md-6">
                   <div class="panel panel-default secondary--background widget--presence-experts widget--borderless mb-5" v-for="(expert, i) in publicationExperts" :key="expert.id" @click="gotoProfile(expert.id)" v-if="(i+1) % 2">
                     <div class="panel-body p-3 row">
                     <!-- <div class="panel-body p-2 row" style="min-height: 180px!important"> -->
                       <!-- Picture -->
-                      <div class="col-xs-6 col-md-5">
+                      <div class="col-6 col-md-5">
                         <img :data-src="expert.avatar" alt="" class="lazyload w3-round widget--expert-img" v-if="expert.avatar" @click="gotoProfile(expert.id)">
                         <div class="widget--expert-img-placeholder d-flex flex-row align-items-center justify-content-center" v-else>
                           <img src="../../assets/logo-white.png" alt="">
                         </div>
                       </div>
                       <!-- Info -->
-                      <div class="col-xs-6 col-md-7 py-1 pl-1 caption main-color">
+                      <div class="col-6 col-md-7 py-1 pl-1 caption main-color">
                         <!-- Name -->
                         <div class="w3-medium widget--title mb-3 widget--hover-brand-color pointer" @click="gotoProfile(expert.id)">{{expert.name}}</div>
                         <div class="font-small widget--subtitle"><i class="fa fa-legal mr-2" aria-hidden="true"></i>
@@ -128,18 +146,18 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-xs-12 col-md-6">
+                <div class="col-12 col-md-6">
                     <div class="panel panel-default secondary--background widget--presence-experts widget--borderless mb-5" v-for="(expert, i) in publicationExperts" :key="expert.id" @click="gotoProfile(expert.id)" v-if="(i+2) % 2">
                       <div class="panel-body p-3 row">
                         <!-- Picture -->
-                        <div class="col-xs-6 col-md-5">
+                        <div class="col-6 col-md-5">
                           <img :data-src="expert.avatar" alt="" class="lazyload w3-round widget--expert-img" v-if="expert.avatar" @click="gotoProfile(expert.id)">
                           <div class="widget--expert-img-placeholder d-flex flex-row align-items-center justify-content-center" v-else>
                             <img src="../../assets/logo-white.png" alt="">
                           </div>
                         </div>
                         <!-- Info -->
-                        <div class="col-xs-6 col-md-7 py-1 pl-1 caption main-color">
+                        <div class="col-6 col-md-7 py-1 pl-1 caption main-color">
                           <!-- Name -->
                           <div class="w3-medium widget--title mb-3 widget--hover-brand-color pointer" @click="gotoProfile(expert.id)">{{expert.name}}</div>
                           <div class="font-small widget--subtitle"><i class="fa fa-legal mr-2" aria-hidden="true"></i>
@@ -169,7 +187,7 @@
           <Share :link="$route.fullPath" />
         </div>
         <!-- Sidebar -->
-        <div class="col-xs-12 col-md-4">
+        <div class="col-12 col-md-4">
           <Sidebar />
         </div>
       </div>
@@ -178,14 +196,14 @@
 
     <!-- Learn more -->
     <section v-if="recommandations.length">
-      <div class="container mt-5 mb-3">
-        <h4 class="pull-left widget--see-more">
+      <div class="container _flex _between mt-5 mb-3">
+        <h5 class="widget--see-more">
           <span v-if="french">Voir aussi</span>
           <span v-if="english">See more</span>
-        </h4>
-        <div class="pull-right">
-          <a @click="scrollRight" class="widget--hover-brand-color pointer"><i class="fa fa-angle-left mr-4 w3-xxlarge"></i></a>
-          <a @click="scrollLeft" class="widget--hover-brand-color pointer"><i class="fa fa-angle-right w3-xxlarge"></i></a>
+        </h5>
+        <div class="">
+          <a @click="scrollRight" class="widget--hover-brand-color pointer"><i class="fal fa-angle-left mr-4 w3-xxlarge"></i></a>
+          <a @click="scrollLeft" class="widget--hover-brand-color pointer"><i class="fal fa-angle-right w3-xxlarge"></i></a>
         </div>
       </div>
       <div class="primary--background">
@@ -193,12 +211,12 @@
           <div class="d-flex flex-nowrap flex-row align-items-center widget--more" id="widget--more">
             <div class="widget--more-box" v-for="item in recommandations" :key="item.id">
               <div class="widget--more-boxing">
-                <h4 class="my-0">
+                <h5 class="my-0">
                   <strong v-if="french">{{item.title_fr}}</strong>
                   <strong v-if="english">{{item.title_en}}</strong>
-                </h4>
-                <button type="button" class="btn widget--brand widget--radius-link mr-4 widget--position" @click="goto({url: '/services', data: item})">
-                  <i class="fa fa-angle-right mr-2" aria-hidden="true"></i>
+                </h5>
+                <button type="button" class="btn widget--brand widget--radius-link mr-4 widget--position" @click="goto({url: '/about', data: item})">
+                  <i class="fal fa-angle-right mr-2" aria-hidden="true"></i>
                   <span v-if="french">Lire plus</span>
                   <span v-if="english">Read more</span>
                 </button>
